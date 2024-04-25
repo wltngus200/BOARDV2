@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.boardver2.board.BoardMapper">
+    <insert id="postBoard">
+        INSERT INTO board
+        SET title =#{title},
+        contents=#{contents},
+        writer_id=#{writerId}
+    </insert>
+
+    <select id ="getBoardAll">
+        SELECT A.board_id AS boardId, A.title, A.writer_id AS writerId,
+        A.cteated_at AS createdAt, A.hits, A.contents, B.nm AS WriterName
+        FROM board A
+        INNER JOIN user B
+        ON A.writer_id=B.user_id
+    </select>
+
+    <select id="getBoardOne">
+        SELECT A.board_id AS boardId, A.title, A.writer_id AS writerId,
+                A.cteated_at AS createdAt, A.hits, A.contents, B.nm AS WriterName
+        FROM board A
+        INNER JOIN user B
+        ON A.writer_id=B.user_id
+        <!-- 페이징처리-->
+    </select>
+
+    <delete id="deleteBoard">
+        DELETE
+        FROM board
+        WHERE board_id=#{board_id}
+    </delete>
+
+</mapper>
+
+<!-- 우리가 쓸 쿼리문 -->

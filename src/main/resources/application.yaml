@@ -8,9 +8,16 @@ spring:
     username: root
     password: green502
 
+# 구조를 파악하기 쉽다, 중복된 값이 적게 들어간다
+# 소속되어있음을 탭으로 구분
+# : 띄어쓰기 하고 쓰기
+
 mybatis:
   mapper-locations: mappers/**/*.xml
+# 마이바티스에서 xml이 있는 위치
+# 우선적으로 resources를 찾음 외부의 경우 앞에 추가적으로 기입
 
 springdoc:
   swagger-ui:
     path: /swagger
+# 리다이렉트 스웨거 문저로 자동적으로 이동
