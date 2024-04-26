@@ -5,9 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BoardGetOneReq {
+public class BoardPutReq {
+    private long boardId;
     private String title;
     private String contents;
-    private long writerId;
-    private int hits;
 }

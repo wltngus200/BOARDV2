@@ -1,9 +1,6 @@
 package com.green.boardver2.board;
 
-import com.green.boardver2.board.model.BoardGetAllReq;
-import com.green.boardver2.board.model.BoardGetOneReq;
-import com.green.boardver2.board.model.BoardPostReq;
-import com.green.boardver2.common.ResultDto;
+import com.green.boardver2.board.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +15,23 @@ public class BoardService {
         return mapper.postBoard(p);
     }
 
-    List<BoardGetAllReq> getBoardAll(){
-       return mapper.getBoardAll();
+    List<BoardGetAllRes> getBoardAll(BoardGetReq p){
+        //p.setLength(p.getSize());
+        //p.setStartIdx((p.getPage()-1)*p.getSize());
+        return mapper.getBoardAll(p);
     }
 
-    BoardGetOneReq getBoardOne(long BoardId){
-        return mapper.getBoardOne(BoardId);
+    BoardGetOneRes getBoardOne(long boardId) {
+        BoardGetOneRes result = mapper.getBoardOne(boardId);
+        if (result != null) {//Record가 있다면 조회수 +1
+            mapper.patchBoardHits(boardId);
+        }
+        return result;
     }
 
-    int deleteBoard(int boardId){
+    int deleteBoard(long boardId){
         return mapper.deleteBoard(boardId);
     }
+
+    int putBoard(BoardPutReq p){return mapper.putBoard(p);}
 }

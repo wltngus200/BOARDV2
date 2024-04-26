@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController //최종결재만 하는 애
+@RestController //최종결재만 하는 애 //입구이자 점검
 @RequiredArgsConstructor
 @RequestMapping("user")
 public class UserController {

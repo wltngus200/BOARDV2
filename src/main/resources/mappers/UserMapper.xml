@@ -24,5 +24,16 @@
     </update>
 
 </mapper>
-
+        <!-- 인서트 업데이트 딜리트는 뭘 쓰든 상관 없다, 단 인서트는 기능이 있음-->
+        <!-- id값은 메소드와 같음 #{보낸다고 했는 애의 멤버필드명}-->
+        <!-- select's return type is not int (스칼라값이면 가능-아주 드물기 때문에 객체로 받기) -->
+        <!-- insert 에 넣은 값과 컬럼명이 일치하면 넣어줌-->
+        <!-- update #이 2개 class -->
+        <!-- mapper DAO+bean 이 외에도 빈등록이 가능한 에노테이션이 많다-->
+            <!-- 앞으로 자주 들을 단어들 IOD DI 빈등록 인터셉터 필터 시큐리티~ -->
+        <!-- @requestmappint(1차 주소를 통일) -->
+            <!-- @PostMapping(2차 주소값) http method 포스트 주소값으로 날아왔다면 이 애가 담당자 -->
+            <!-- usercontroller 에서 sign in 은 select인데 post로 보내는 이유: 비밀번호 노출 X -->
+        <!-- 에노케이션 파라미터 리턴타입 중요 @RequestBody Body에 담긴 제이슨타입으로 넘어옴 -->
+        <!-- ResultDto Http 200같은 오류코드, T는 json이 넘어옴 , Json도 일조의 문자열 -->
 <!-- 우리가 쓸 쿼리문 -->

@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.green.boardver2.board.BoardMapper">
+
+
     <insert id="postBoard">
         INSERT INTO board
         SET title =#{title},
@@ -10,29 +12,57 @@
         writer_id=#{writerId}
     </insert>
 
+
+
     <select id ="getBoardAll">
+        SELECT A.board_id AS boardId, A.title, A.writer_id AS writerId,
+        A.cteated_at AS createdAt, A.hits, B.nm AS WriterName
+        FROM board A
+        INNER JOIN user B
+        ON A.writer_id=B.user_id
+        <!-- 페이징처리-->
+        ORDER BY A.board_id DESC
+        LIMIT #{startIdx}, #{length}
+    </select>
+
+
+
+    <select id="getBoardOne">
         SELECT A.board_id AS boardId, A.title, A.writer_id AS writerId,
         A.cteated_at AS createdAt, A.hits, A.contents, B.nm AS WriterName
         FROM board A
         INNER JOIN user B
         ON A.writer_id=B.user_id
+        WHERE A.board_id=#{boardId}
     </select>
 
-    <select id="getBoardOne">
-        SELECT A.board_id AS boardId, A.title, A.writer_id AS writerId,
-                A.cteated_at AS createdAt, A.hits, A.contents, B.nm AS WriterName
-        FROM board A
-        INNER JOIN user B
-        ON A.writer_id=B.user_id
-        <!-- 페이징처리-->
-    </select>
+
+
+    <update id="putBoard">
+        UPDATE board
+        <set>
+            <if test="title!=null and title!=''">
+                , title=#{title}
+            </if>
+            <if test="contents!=null and contents!=''">
+                , contents=#{contents}
+            </if>
+        </set>
+        WHERE board_id=#{boardId}
+    </update>
+
+    <update id="patchBoardHits">
+        UPDATE board
+        SET hits=hits+1
+        WHERE board_id=#{boardId}
+
+    </update>
 
     <delete id="deleteBoard">
         DELETE
         FROM board
         WHERE board_id=#{board_id}
     </delete>
-
 </mapper>
 
 <!-- 우리가 쓸 쿼리문 -->

@@ -12,4 +12,5 @@ public class ResultDto<T> {//필수는 아님 우리가 기준을 세우면 됨(
     private HttpStatus statusCode; //200, 300, 400의 에러코드를 날림
     private String resultMsg; //에러 메세지
     private T resultData; //실제 데이터
+    //프론트랑 통신
 }
