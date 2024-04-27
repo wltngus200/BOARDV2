@@ -16,7 +16,6 @@
         WHERE uid=#{uid} <!--유니크를 걸었기 때문에 있거나 없거나, 이름을 굳이 맞추지 않아도 된다-->
     </select>
 
-
     <update id="patchPassword">
         UPDATE user
         SET upw=#{newPw}
