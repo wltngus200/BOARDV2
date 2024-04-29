@@ -22,7 +22,7 @@
         ON A.writer_id=B.user_id
         <!-- 페이징처리-->
         ORDER BY A.board_id DESC
-        LIMIT #{startIdx}, #{length}
+        LIMIT #{startIdx}, #{length} <!--1번 게시글부터 10개-->
     </select>
 
 

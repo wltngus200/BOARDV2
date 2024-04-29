@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RestController
-@RequestMapping("board")
+@RestController //빈등록+URL매핑(담당자 지정)
+@RequestMapping("board") //board url로 들어오면 얘가 담당
+//http메소드 까지 합해서 담당자 지정
 public class BoardController {
     private final BoardService service;
 

@@ -21,3 +21,7 @@ springdoc:
   swagger-ui:
     path: /swagger
 # 리다이렉트 스웨거 문저로 자동적으로 이동
+
+server:
+  port: 8081
+#swagger에서 2가지 다 기동하기 위함

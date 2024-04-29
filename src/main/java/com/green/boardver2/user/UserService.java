@@ -36,7 +36,7 @@ public class UserService {
 
     //1 변경성공 2 아이디 확인 3 기존 비밀번호 확인
     public int patchPassword(ChangePasswordPatchReq p){
-        UserEntity entity=mapper.getUserById(p.getUid());
+        UserEntity entity = mapper.getUserById(p.getUid());
         if(entity==null){
             return 2;
         }else if(!BCrypt.checkpw(p.getCurrentPw(),entity.getUpw())){

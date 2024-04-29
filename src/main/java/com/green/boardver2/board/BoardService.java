@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service //빈등록 스프링에게 객체 생성 위임(싱글톤:객체 생성이 여러개 될 수 없게 구조화)
 @RequiredArgsConstructor
 public class BoardService {
     private final BoardMapper mapper;

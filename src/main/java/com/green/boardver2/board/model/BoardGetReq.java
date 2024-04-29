@@ -16,7 +16,7 @@ public class BoardGetReq {
     private int page;//페이지값
     private int size=10;//페이지당 레코드 수
 
-    @ConstructorProperties({"page, size"})//자바의 이름과 다를 때
+    @ConstructorProperties({"page", "size"})//자바의 이름과 다를 때 생성자에 이름 부여
     public BoardGetReq(Integer page, Integer size) {
         this.page = page == null ? 1 : page;
         this.size = size == null ? 10 : size;
