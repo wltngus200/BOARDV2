@@ -39,7 +39,7 @@ public class BoardController {
 //                .resultData(list).build();
 //    }
 
-    @GetMapping//?page=m&size=n?????
+    @GetMapping//?page=m&size=n
     public ResultDto<List<BoardGetAllRes>> getBoardAll(@ModelAttribute BoardGetReq p){
         List<BoardGetAllRes> list=service.getBoardAll(p);
         System.out.println(p);
